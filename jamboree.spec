@@ -11,6 +11,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	libgnomeui-devel >= 2.0.0
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	gstreamer-devel >= 0.6.2
+BuildRequires:	gstreamer-vorbis >= 0.6.2
+BuildRequires:	gstreamer-mad >= 0.6.2
 BuildRequires:	libogg-devel >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
 BuildRequires:	libid3tag-devel >= 0.12
@@ -18,8 +20,6 @@ BuildRequires:	gdbm-devel >= 1.8.0
 Requires(post): scrollkeeper
 Requires(post): GConf2
 Requires:	gstreamer-audiosink
-Requires:	gstreamer-vorbis
-Requires:	gstreamer-mad
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
