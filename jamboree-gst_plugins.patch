@@ -1,0 +1,19 @@
+diff -urN aa/jamboree-0.4/configure.in jamboree-0.4/configure.in
+--- aa/jamboree-0.4/configure.in	2004-02-07 14:47:47.000000000 +0100
++++ jamboree-0.4/configure.in	2004-02-07 18:56:27.666829184 +0100
+@@ -109,15 +109,6 @@
+ AC_SUBST(JAMBOREE_LIBS)
+ 
+ if test "x$have_xine" = "xno"; then
+- AM_GST_ELEMENT_CHECK(volume,,AC_MSG_ERROR([
+-	The 'volume' GStreamer element was not found. It can usually be found in the package gstreamer-plugins. If it is already installed please run gst-register-0.7 and try again. ]))
+- AM_GST_ELEMENT_CHECK(vorbisenc,,AC_MSG_WARN([
+-	The 'vorbisenc' GStreamer element was not found.  This will
+-        cause Jamboree to not work with Vorbis OGG files. ]))
+- AM_GST_ELEMENT_CHECK(mad,,AC_MSG_WARN([
+-	The 'mad' GStreamer element was not found. This will cause
+-        Jamboree to not work with MP3 files. ]))
+-
+  backend="gstreamer"
+ else
+  backend="xine"
