@@ -1,0 +1,8 @@
+--- jamboree.desktop.in.orig	2004-08-24 18:59:39.652261064 +0200
++++ jamboree.desktop.in	2004-08-24 18:59:17.764588496 +0200
+@@ -8,4 +8,4 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;AudioVideo;X-Ximian-Main;X-Red-Hat-Base;
++Categories=GNOME;Application;AudioVideo;Player;X-Ximian-Main;X-Red-Hat-Base;
