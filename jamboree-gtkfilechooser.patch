@@ -1,0 +1,18 @@
+diff -urN aa/jamboree-0.4/src/main-window.c jamboree-0.4/src/main-window.c
+--- aa/jamboree-0.4/src/main-window.c	2004-02-05 20:53:34.000000000 +0100
++++ jamboree-0.4/src/main-window.c	2004-03-10 19:16:39.483912776 +0100
+@@ -2332,13 +2332,11 @@
+ 
+   dialog = gtk_file_chooser_dialog_new (_("Add Music Folder"),
+ 					GTK_WINDOW (window),
+-					GTK_FILE_CHOOSER_ACTION_OPEN,
++					GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
+ 					GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+ 					GTK_STOCK_ADD, GTK_RESPONSE_ACCEPT,
+ 					NULL);
+ 
+-  gtk_file_chooser_set_folder_mode (GTK_FILE_CHOOSER (dialog), TRUE);
+-
+   start_dir = gconf_client_get_string (gconf_client,
+ 				       GCONF_PATH "/default_add_folder",
+ 				       NULL);
