@@ -68,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install
 echo "Remember to install appropriate gstreamer plugins for files"
 echo "you want to play:"
-echo "- gstreamer-mad (for mp3s)"
+echo "- gstreamer-mad (for MP3s)"
 echo "- gstreamer-vorbis (for Ogg Vorbis)"
 
 %files -f %{name}.lang
