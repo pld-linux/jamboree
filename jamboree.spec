@@ -5,7 +5,7 @@ Release:	1
 License:	GPL
 Source0:	http://www.gnome.org/~jdahlin/jamboree/%{name}-%{version}.tar.gz
 # Source0-md5:	894b8805113c400c873cd112c36af9cc
-Patch0:		%{name}-disable-test-build.patch
+Patch0:		%{name}-test-build.patch
 Group:		Applications/Multimedia
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	libgnomeui-devel >= 2.0.0
@@ -34,8 +34,6 @@ Jamboree is a music player
 %{__automake}
 %{__autoconf}
 %configure \
-	--disable-oggtest \
-	--disable-vorbistest \
 	--disable-schemas-install
 
 %{__make}
