@@ -20,10 +20,10 @@ BuildRequires:	libglade2-devel >= 2.3.1
 BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libogg-devel >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
-Requires(post): GConf2
+Requires(post):	GConf2
 Requires:	gstreamer-audio-effects >= 0.7.4
 Requires:	gstreamer-audiosink >= 0.7.4
-BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Jamboree is a music player.
