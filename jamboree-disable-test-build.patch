@@ -1,0 +1,9 @@
+diff -Nuard jamboree-0.3.orig/Makefile.am jamboree-0.3/Makefile.am
+--- jamboree-0.3.orig/Makefile.am	2003-09-21 20:24:15.000000000 +0200
++++ jamboree-0.3/Makefile.am	2003-10-28 23:25:41.000000000 +0100
+@@ -1,4 +1,4 @@
+-SUBDIRS=src data test m4 po
++SUBDIRS=src data m4 po
+ 
+ @INTLTOOL_DESKTOP_RULE@
+ 
