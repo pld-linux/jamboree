@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 echo "Remember to install appropriate gstreamer plugins for files"
 echo "you want to play:"
 echo "- gstreamer-mad (for MP3s)"
-echo "- gstreamer-Vorbis (for Ogg Vorbis)"
+echo "- gstreamer-vorbis (for Ogg Vorbis)"
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
