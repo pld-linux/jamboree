@@ -21,8 +21,8 @@ BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libid3tag-devel >= 0.12
 BuildRequires:	libglade2-devel >= 2.3.1
 BuildRequires:	libgnomeui-devel >= 2.4.0
-BuildRequires:	libogg-devel >= 1.0
-BuildRequires:	libvorbis-devel >= 1.0
+BuildRequires:	libogg-devel >= 2:1.0
+BuildRequires:	libvorbis-devel >= 1:1.0
 Requires(post):	GConf2
 Requires:	gstreamer-audio-effects >= 0.8.2
 Requires:	gstreamer-audiosink
