@@ -2,7 +2,7 @@ Summary:	Music Player
 Summary(pl):	Odtwarzacz muzyki
 Name:		jamboree
 Version:	0.4
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.4/%{name}-%{version}.tar.bz2
@@ -11,6 +11,7 @@ Patch0:		%{name}-gst_plugins.patch
 Patch1:		%{name}-locale-names.patch
 Patch2:		%{name}-gstreamer08.patch
 Patch3:		%{name}-gtkfilechooser.patch
+Patch4:		%{name}-desktop.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gdbm-devel >= 1.8.0
@@ -25,7 +26,7 @@ BuildRequires:	libogg-devel >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
 Requires(post):	GConf2
 Requires:	gstreamer-audio-effects >= 0.8.0
-Requires:	gstreamer-audiosink >= 0.8.0
+Requires:	gstreamer-audiosink
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,6 +41,8 @@ Jamboree to odtwarzacz muzyki.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p0
+
 
 mv po/{no,nb}.po
 
