@@ -1,25 +1,28 @@
 Summary:	Music Player
 Summary(pl):	Odtwarzacz muzyki
 Name:		jamboree
-Version:	0.3
+Version:	0.4
 Release:	1
 License:	GPL
 Group:		Applications/Multimedia
-Source0:	http://www.gnome.org/~jdahlin/jamboree/%{name}-%{version}.tar.gz
-# Source0-md5:	894b8805113c400c873cd112c36af9cc
-Patch0:		%{name}-test-build.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.4/%{name}-%{version}.tar.bz2
+# Source0-md5:	37e70e22f8abf6f7ce0b2c21c8090d2a
+Patch0:		%{name}-gst_plugins.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gdbm-devel >= 1.8.0
-BuildRequires:	gstreamer-devel >= 0.6.2
-BuildRequires:	libgnomeui-devel >= 2.0.0
-BuildRequires:	libglade2-devel >= 2.0.0
+BuildRequires:	gstreamer-GConf-devel >= 0.7.4
+BuildRequires:	gstreamer-devel >= 0.7.4
+BuildRequires:	gstreamer-plugins-devel >= 0.7.4
+BuildRequires:	gtk+2-devel >= 2.3.1
 BuildRequires:	libid3tag-devel >= 0.12
+BuildRequires:	libglade2-devel >= 2.3.1
+BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libogg-devel >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
-Requires(post): scrollkeeper
 Requires(post): GConf2
-Requires:	gstreamer-audiosink
+Requires:	gstreamer-audio-effects >= 0.7.4
+Requires:	gstreamer-audiosink >= 0.7.4
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,11 +36,13 @@ Jamboree to odtwarzacz muzyki.
 %patch0 -p1
 
 %build
-%{__aclocal} -I m4
+%{__aclocal}
 %{__automake}
 %{__autoconf}
 %configure \
-	--disable-schemas-install
+	--disable-schemas-install \
+	--enable-dbus=no \
+	--enable-xine=no
 
 %{__make}
 
@@ -53,10 +58,11 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/bin/scrollkeeper-update
 %gconf_schema_install
-
-%postun -p /usr/bin/scrollkeeper-update
+echo "Remember to install appropriate gstreamer plugins for files"
+echo "you want to play:"
+echo "- gstreamer-mad (for mp3s)"
+echo "- gstreamer-vorbis (for Ogg Vorbis)"
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
