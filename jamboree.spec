@@ -2,15 +2,15 @@ Summary:	Music Player
 Summary(pl):	Odtwarzacz muzyki
 Name:		jamboree
 Version:	0.5
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Multimedia
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.5/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/jamboree/0.5/%{name}-%{version}.tar.bz2
 # Source0-md5:	23a0b5e3eda5e73bf838af66ba4b3180
 Patch0:		%{name}-gst_plugins.patch
 Patch1:		%{name}-locale-names.patch
 Patch2:		%{name}-desktop.patch
-URL:		http://www.imendio.com/projects/jamboree/
+URL:		http://developer.imendio.com/wiki/Jamboree
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gdbm-devel >= 1.8.0
