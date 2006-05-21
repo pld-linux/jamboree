@@ -1,12 +1,12 @@
-diff -urN aa/jamboree-0.4/configure.in jamboree-0.4/configure.in
---- aa/jamboree-0.4/configure.in	2004-02-07 14:47:47.000000000 +0100
-+++ jamboree-0.4/configure.in	2004-03-10 18:48:47.649070304 +0100
-@@ -156,7 +156,7 @@
+diff -aurN jamboree-0.5.orig/configure.in jamboree-0.5/configure.in
+--- jamboree-0.5.orig/configure.in	2004-09-28 10:53:24.000000000 +0200
++++ jamboree-0.5/configure.in	2006-05-21 18:04:16.028707160 +0200
+@@ -130,7 +130,7 @@
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [ Gettext package ])
  
--ALL_LINGUAS="az ca cs de es fi fr hr nl no pt sr sr@Latn sv"
-+ALL_LINGUAS="az ca cs de es fi fr hr nb nl pt sr sr@Latn sv"
+-ALL_LINGUAS="az ca cs de en_CA en_GB es fi fr hr nl no pt pt_BR sr sr@Latn sv"
++ALL_LINGUAS="az ca cs de en_CA en_GB es fi fr hr nb nl pt pt_BR sr sr@Latn sv"
  AM_GLIB_GNU_GETTEXT
  AM_GLIB_DEFINE_LOCALEDIR(JAMBOREE_LOCALEDIR)
  

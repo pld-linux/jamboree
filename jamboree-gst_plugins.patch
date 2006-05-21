@@ -1,19 +1,65 @@
-diff -urN aa/jamboree-0.4/configure.in jamboree-0.4/configure.in
---- aa/jamboree-0.4/configure.in	2004-02-07 14:47:47.000000000 +0100
-+++ jamboree-0.4/configure.in	2004-02-07 18:56:27.666829184 +0100
-@@ -109,15 +109,6 @@
+diff -aurN jamboree-0.5.orig/configure.in jamboree-0.5/configure.in
+--- jamboree-0.5.orig/configure.in	2004-09-28 10:53:24.000000000 +0200
++++ jamboree-0.5/configure.in	2006-05-21 18:02:33.955224688 +0200
+@@ -63,61 +63,6 @@
+ AC_SUBST(JAMBOREE_CFLAGS)
  AC_SUBST(JAMBOREE_LIBS)
  
- if test "x$have_xine" = "xno"; then
-- AM_GST_ELEMENT_CHECK(volume,,AC_MSG_ERROR([
--	The 'volume' GStreamer element was not found. It can usually be found in the package gstreamer-plugins. If it is already installed please run gst-register-0.7 and try again. ]))
-- AM_GST_ELEMENT_CHECK(vorbisenc,,AC_MSG_WARN([
--	The 'vorbisenc' GStreamer element was not found.  This will
--        cause Jamboree to not work with Vorbis OGG files. ]))
-- AM_GST_ELEMENT_CHECK(mad,,AC_MSG_WARN([
--	The 'mad' GStreamer element was not found. This will cause
--        Jamboree to not work with MP3 files. ]))
+-missing=
+-AM_GST_ELEMENT_CHECK(spider,,missing="$missing spider")
+-AM_GST_ELEMENT_CHECK(audioconvert,,missing="$missing audioconvert")
+-AM_GST_ELEMENT_CHECK(audioscale,,missing="$missing audioscale")
+-AM_GST_ELEMENT_CHECK(volume,,missing="$missing volume")
+-AM_GST_ELEMENT_CHECK(fakesink,,missing="$missing fakesink")
 -
-  backend="gstreamer"
- else
-  backend="xine"
+-if test x"$missing" != x; then
+-  AC_MSG_ERROR([
+-The following GStreamer elements are missing:
+-
+-    $missing
+-
+-Make sure you have gstreamer and gstreamer-plugins installed, along with their development packages.
+-])
+-fi
+-
+-dnl Check for available sinks
+-dnl =========================
+-sinks=
+-AM_GST_ELEMENT_CHECK(esdsink,sinks="${sinks}esdsink ")
+-AM_GST_ELEMENT_CHECK(osssink,sinks="${sinks}osssink ")
+-
+-dnl Check for available decoders
+-dnl ============================
+-missing_mp3=
+-AM_GST_ELEMENT_CHECK(id3demux,,missing_mp3="$missing_mp3 id3demux")
+-AM_GST_ELEMENT_CHECK(mad,,missng_mp3="$missing_mp3 mad")
+-
+-missing_ogg=
+-AM_GST_ELEMENT_CHECK(oggdemux,,missing_ogg="$missing_ogg oggdemux")
+-AM_GST_ELEMENT_CHECK(vorbisdec,,missing_ogg="$missing_ogg vorbisdec")
+-
+-formats=
+-if test x"$missing_mp3" = x; then
+- AC_DEFINE(HAVE_MP3, 1, mp3 support)
+- formats="${formats}mp3 "
+-fi
+-
+-
+-if test x"$missing_ogg" = x; then
+- AC_DEFINE(HAVE_OGG, 1, ogg support)
+- formats="${formats}ogg "
+-fi
+-
+-if test x"$formats" = x; then
+-  AC_MSG_ERROR([
+-
+-There are no GStreamer elements installed for mp3 or Vorbis ogg support.
+-
+-Make sure you have the appropriate packages installed.
+-])
+-fi
+-
+-
+ dnl Check for gdbm
+ dnl ==========================
+ AC_CHECK_HEADER(gdbm.h,,AC_MSG_ERROR(you need gdbm))
