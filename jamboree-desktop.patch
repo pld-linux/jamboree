@@ -1,14 +1,8 @@
-diff -urN jamboree-0.5.oryg/jamboree.desktop.in jamboree-0.5/jamboree.desktop.in
---- jamboree-0.5.oryg/jamboree.desktop.in	2004-09-28 14:11:01.630307264 +0200
-+++ jamboree-0.5/jamboree.desktop.in	2004-09-28 14:11:34.566300232 +0200
-@@ -4,8 +4,8 @@
- _Name=Jamboree Music Player
- _Comment=Listen to your music
- Exec=jamboree
--Icon=jamboree
-+Icon=jamboree.png
+--- jamboree.desktop.in.orig	2004-08-24 18:59:39.652261064 +0200
++++ jamboree.desktop.in	2004-08-24 18:59:17.764588496 +0200
+@@ -8,4 +8,4 @@
  StartupNotify=true
  Terminal=false
  Type=Application
 -Categories=GNOME;Application;AudioVideo;X-Ximian-Main;X-Red-Hat-Base;
-+Categories=GTK;GNOME;Audio;Player;
++Categories=GNOME;Application;AudioVideo;Player;X-Ximian-Main;X-Red-Hat-Base;
