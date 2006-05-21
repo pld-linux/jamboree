@@ -1,32 +1,31 @@
 Summary:	Music Player
 Summary(pl):	Odtwarzacz muzyki
 Name:		jamboree
-Version:	0.4
-Release:	4
+Version:	0.5
+Release:	1
 License:	GPL
 Group:		Applications/Multimedia
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	37e70e22f8abf6f7ce0b2c21c8090d2a
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.5/%{name}-%{version}.tar.bz2
+# Source0-md5:	23a0b5e3eda5e73bf838af66ba4b3180
 Patch0:		%{name}-gst_plugins.patch
 Patch1:		%{name}-locale-names.patch
-Patch2:		%{name}-gstreamer08.patch
-Patch3:		%{name}-gtkfilechooser.patch
-Patch4:		%{name}-desktop.patch
+Patch2:		%{name}-desktop.patch
+Patch3:		%{name}-deprecations.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gdbm-devel >= 1.8.0
-BuildRequires:	gstreamer-GConf-devel >= 0.8.0
-BuildRequires:	gstreamer-devel >= 0.8.0
-BuildRequires:	gstreamer-plugins-devel >= 0.8.0
+BuildRequires:	gstreamer-plugins-devel >= 0.8.12
+BuildRequires:	gstreamer08x-GConf-devel >= 0.8.12
+BuildRequires:	gstreamer08x-devel >= 0.8.12
 BuildRequires:	gtk+2-devel >= 2:2.3.6
-BuildRequires:	libid3tag-devel >= 0.12
 BuildRequires:	libglade2-devel >= 2.3.1
 BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	libid3tag-devel >= 0.12
 BuildRequires:	libogg-devel >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
-Requires(post):	GConf2
-Requires:	gstreamer-audio-effects >= 0.8.0
-Requires:	gstreamer-audiosink
+Requires(post,preun):	GConf2
+Requires:	gstreamer08x-audio-effects >= 0.8.0
+Requires:	gstreamer-audiosink < 0.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,10 +38,8 @@ Jamboree to odtwarzacz muzyki.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
+%patch2 -p0
 %patch3 -p1
-%patch4 -p0
-
 
 mv po/{no,nb}.po
 
@@ -61,7 +58,8 @@ mv po/{no,nb}.po
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 %find_lang %{name} --all-name --with-gnome
 
@@ -69,15 +67,21 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install
-echo "Remember to install appropriate gstreamer plugins for files"
-echo "you want to play:"
-echo "- gstreamer-mad (for mp3s)"
-echo "- gstreamer-vorbis (for Ogg Vorbis)"
+%gconf_schema_install jamboree.schemas
+%banner %{name} -e << EOF
+Remember to install appropriate GStreamer plugins for files
+you want to play:
+- gstreamer08x-flac (for FLAC)
+- gstreamer08x-mad (for MP3s)
+- gstreamer08x-vorbis (for Ogg Vorbis)
+EOF
+
+%preun
+%gconf_schema_uninstall rhythmbox.schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog FAQ README TODO
+%doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_sysconfdir}/gconf/schemas/jamboree.schemas
