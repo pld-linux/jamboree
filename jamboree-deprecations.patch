@@ -1,0 +1,10 @@
+diff -aurN jamboree-0.5.orig/src/Makefile.am jamboree-0.5/src/Makefile.am
+--- jamboree-0.5.orig/src/Makefile.am	2004-09-28 10:57:15.000000000 +0200
++++ jamboree-0.5/src/Makefile.am	2006-05-21 18:09:39.615514488 +0200
+@@ -1,6 +1,5 @@
+ INCLUDES = @JAMBOREE_CFLAGS@ \
+         -DDATADIR=\""$(datadir)"\" \
+-	-DGDK_DISABLE_DEPRECATED -DG_DISABLE_DEPRECATED -DGNOME_DISABLE_DEPRECATED \
+ 	$(WARN_CFLAGS)
+ 
+ if HAVE_DBUS
