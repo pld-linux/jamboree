@@ -38,7 +38,7 @@ Jamboree to odtwarzacz muzyki.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p0
+%patch2 -p1
 %patch3 -p1
 
 mv po/{no,nb}.po
@@ -77,7 +77,7 @@ you want to play:
 EOF
 
 %preun
-%gconf_schema_uninstall rhythmbox.schemas
+%gconf_schema_uninstall jamboree.schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
