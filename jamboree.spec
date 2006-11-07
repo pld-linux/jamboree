@@ -85,5 +85,5 @@ EOF
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_sysconfdir}/gconf/schemas/*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
