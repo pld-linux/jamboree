@@ -1,5 +1,5 @@
 Summary:	Music Player
-Summary(pl):	Odtwarzacz muzyki
+Summary(pl.UTF-8):   Odtwarzacz muzyki
 Name:		jamboree
 Version:	0.5
 Release:	2
@@ -32,7 +32,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Jamboree is a music player.
 
-%description -l pl
+%description -l pl.UTF-8
 Jamboree to odtwarzacz muzyki.
 
 %prep
