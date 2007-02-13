@@ -1,5 +1,5 @@
 Summary:	Music Player
-Summary(pl.UTF-8):   Odtwarzacz muzyki
+Summary(pl.UTF-8):	Odtwarzacz muzyki
 Name:		jamboree
 Version:	0.5
 Release:	2
