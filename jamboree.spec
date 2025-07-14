@@ -37,10 +37,10 @@ Jamboree to odtwarzacz muzyki.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 
 mv po/{no,nb}.po
 
